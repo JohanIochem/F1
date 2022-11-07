@@ -1,5 +1,5 @@
 <?php
-class f1team
+class F1team
 {
     protected string $name;
 
@@ -19,7 +19,7 @@ class f1team
     /**
      * @param string $name
      */
-    public function setName(string $name): f1team
+    public function setName(string $name): F1team
     {
         $this->name = $name;
 
@@ -221,7 +221,7 @@ class Car
     protected string $brand;
     protected Driver $driver;
     protected Engine $engine;// <<<< reference
-    protected f1team $f1team;
+    protected F1team $F1team;
     protected Tyre $tyres;
     protected int $maxSpeed;
     protected float $aeroCoef; // (nul)0 >>> 1(efficace)
@@ -342,22 +342,22 @@ class Car
     }
 
     /**
-     * @param f1team $f1team
+     * @param F1team $F1team
      * @return Car
      */
-    public function setf1team(f1team $f1team): Car
+    public function setf1team(F1team $F1team): Car
     {
-        $this->f1team = $f1team;
+        $this->F1team = $F1team;
 
         return $this;
     }
 
     /**
-     * @return f1team
+     * @return F1team
      */
-    public function getf1team(): f1team
+    public function getF1team(): F1team
     {
-        return $this->f1team;
+        return $this->F1team;
     }
 
     /**
@@ -383,12 +383,12 @@ class Car
 class Driver
 {
     protected string $name;
-    protected f1team $f1team;
+    protected F1team $F1team;
 
-    public function __construct(string $name, f1team $f1team)
+    public function __construct(string $name, F1team $F1team)
     {
         $this->name = $name;
-        $this->f1team = $f1team;
+        $this->F1team = $F1team;
     }
 
     /**
@@ -400,48 +400,48 @@ class Driver
     }
 
     /**
-     * @param f1team $f1team
+     * @param F1team $F1team
      * @return Driver
      */
-    public function setf1team(f1team $f1team)
+    public function setF1team(F1team $F1team)
     {
-        $this->f1team = $f1team;
+        $this->F1team = $F1team;
 
         return $this;
     }
 
     /**
-     * @return f1team
+     * @return F1team
      */
-    public function getf1team(): f1team
+    public function getF1team(): F1team
     {
-        return $this->f1team;
+        return $this->F1team;
     }
 }
 
 class FerrariF175 extends Car
 {
-    public function __construct(Engine $engine, f1team $f1team, Driver $driver)
+    public function __construct(Engine $engine, F1team $F1team, Driver $driver)
     {
         parent::__construct('Ferrari', $engine, 0.7, 330);
         $this->setDriver($driver);
-        $this->setf1team($f1team);
+        $this->setf1team($F1team);
     }
 }
 
-$f1team1 = new f1team('Ferrari');
-$f1team2= new f1team('Mercedes');
-$leclerc = new Driver('Charles Leclerc', $f1team2);
-$sainz = new Driver('Carlos Sainz', $f1team1);
+$F1team1 = new F1team('Ferrari');
+$F1team2= new F1team('Mercedes');
+$leclerc = new Driver('Charles Leclerc', $F1team2);
+$sainz = new Driver('Carlos Sainz', $F1team1);
 
 $ferrariPowerUnit = new Engine(6, 500, 0.6, 'Ferrari', '2022');
 
 
-$ferarri = new FerrariF175($ferrariPowerUnit, $f1team1, $leclerc);
+$ferarri = new FerrariF175($ferrariPowerUnit, $F1team1, $leclerc);
 $ferarri->setDriver($leclerc)->setTyres(new Tyre(Tyre::TYPE_SOFT));
 $ferarri->addLap();
 
-$ferarri2 = new FerrariF175($ferrariPowerUnit,$f1team2, $sainz);
+$ferarri2 = new FerrariF175($ferrariPowerUnit,$F1team2, $sainz);
 $ferarri2->setDriver($sainz)->setTyres(new Tyre(Tyre::TYPE_SOFT));
 
 var_dump($ferarri, '___________', $ferarri2);
